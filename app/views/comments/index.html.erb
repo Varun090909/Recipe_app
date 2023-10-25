@@ -1,0 +1,17 @@
+<h1>Comments</h1>
+<table>
+  <thead>
+    <tr>
+      <th>title</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= link_to comment.title, comment %></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>

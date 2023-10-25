@@ -1,0 +1,17 @@
+.A{
+  color:red
+}
+/* CSS */
+.recipe-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* One column */
+  gap: 10px; /* Gap between grid items */
+}
+
+.recipe-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+/* You can adjust the styling as needed */
