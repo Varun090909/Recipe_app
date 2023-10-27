@@ -1,3 +1,11 @@
-<h1 class="A">Welcome to homepage</h1>
 
 
+<ul>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <% if user_signed_in? %>
+        <%= link_to recipe.name, recipe %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

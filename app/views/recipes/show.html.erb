@@ -1,31 +1,45 @@
-
 <div class="recipe-grid">
   <div class="recipe-item">
     <h1><%= @recipe.name %></h1>
     <p><%= @recipe.description %></p>
+
+    <!-- Code for video and image -->
+    <% if @recipe.file.attached? %>
+      <div class="message-image-container">
+        <% if @recipe.file.image? %>
+          <%= image_tag @recipe.file, class: "message-image", width: "300", height: "200" %>
+        <% elsif @recipe.file.video? %>
+          <%= video_tag url_for(@recipe.file), class: "message-video", controls: true, width: "300", height: "200" %>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if alert %>
+      <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <!-- Buttons for recipe actions -->
+    <div class="recipe-buttons">
+      <% if current_user == @recipe.user %>
+        <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+        <%= button_to 'Destroy', recipe_path(@recipe), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      <% else %>
+        <%= link_to 'Add Comment', new_comment_path(recipe_id: @recipe.id), class: "btn btn-success" %>
+        <%= link_to "Back", :back, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+
+    <!-- Like button and count -->
+    <div class="like-section">
+      <%= @recipe.likes.count %> likes
+      <% like = current_user.likes.find_by(recipe: @recipe) %>
+      <% if like.nil? %>
+        <%= button_to 'Like', likes_path, params: { like: { recipe_id: @recipe.id } }, method: :post, class: "btn btn-primary" %>
+      <% else %>
+        <%= button_to 'Unlike', like_path(like), method: :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-
-<% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <%= alert %>
-  </div>
-<% end %>
-
-<ul>
-<li><%= link_to "Edit", edit_recipe_path(@recipe) %></li>
-</ul>
-
-
-
-<ul>
-  <li>
-    <%= button_to 'Destroy', recipe_path(@recipe), method: :delete %>
-  </li>
-</ul>
-
-<ul>
-  <li><%= link_to "Back", :back %></li>
-</ul>

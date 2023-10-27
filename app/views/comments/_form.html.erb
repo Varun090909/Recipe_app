@@ -1,13 +1,6 @@
-<%= form_with model: comment do |form| %>
-  <div>
-    <%= form.label :title%><br>
-    <%= form.text_field :title%>
-    <% form.object.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+
+<%= form_with(model: @comment, url: comments_path(recipe_id: params[:recipe_id]), local: true) do |form| %>
+  <%= form.text_area :title, placeholder: 'Enter your comment' %>
+  <%= form.submit 'Add Comment' %>
 <% end %>

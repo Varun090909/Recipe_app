@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :home
   resources :recipes
   resources :comments
+  resources :likes, only: [:create, :destroy]
 
 
   devise_scope :user do 

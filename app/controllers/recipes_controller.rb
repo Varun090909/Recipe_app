@@ -38,7 +38,6 @@ class RecipesController < ApplicationController
           render :edit, status: :unprocessable_entity
         end
       else
-        flash[:alert] = "You are not authorized to edit this recipe."
         redirect_to @recipe
       end
     end
@@ -59,7 +58,7 @@ class RecipesController < ApplicationController
 
     private
       def recipe_params
-        params.require(:recipe).permit(:name, :description)
+        params.require(:recipe).permit(:name, :description, :file)
       end
   
 end
