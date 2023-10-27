@@ -104,3 +104,62 @@
   border-radius: 5px;
 }
 
+/* Styling for recipeindex  */
+/* Style for the welcome section */
+h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Style for the "Recipes" heading */
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+}
+
+table th, table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style for the "File" column */
+table td:nth-child(4) {
+  width: 20%;
+}
+
+/* Style for the "File" container */
+.message-file-container {
+  text-align: center;
+}
+
+/* Style for images and videos */
+.message-image, .message-video {
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+}
+
+/* Style for download link */
+.message-file-container a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #3498db;
+}
+
+/* Style for the "Download File" link */
+.message-file-container a:hover {
+  color: #007acc;
+}
