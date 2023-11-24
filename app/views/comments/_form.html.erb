@@ -1,5 +1,6 @@
 
 
+
 <%= form_with(model: @comment, url: comments_path(recipe_id: params[:recipe_id]), local: true) do |form| %>
   <%= form.text_area :title, placeholder: 'Enter your comment' %>
   <%= form.submit 'Add Comment' %>

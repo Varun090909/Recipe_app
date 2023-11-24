@@ -48,17 +48,3 @@ end
 
 
 
-
-
-  # def destroy
-    
-  #   @like = current_user.likes.new(like_params)
-  #   recipe = @like.recipe
-  #   @like.destroy
-  #   redirect_to recipe
-  # end
-  
-  # private
-  # def like_params
-  #   params.require(:like).permit(:recpe_id)    
-  # end

@@ -10,8 +10,15 @@
 
   <div>
   <%= form.label :description %><br>
-  <%= form.text_field :description %>
+  <%= form.text_area :description %>
   <% form.object.errors.full_messages_for(:description).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+</div>
+ <div>
+  <%= form.label :ingredient %><br>
+  <%= form.text_area:ingredient%>
+  <% form.object.errors.full_messages_for(:ingredient).each do |message| %>
     <div><%= message %></div>
   <% end %>
 </div>

@@ -48,9 +48,17 @@
         </li>
         <%end%> 
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+         <%if user_signed_in? %><br>
+      <%# <form class="d-flex" method = "GET" action = "/search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name = "query" method = "GET">
+        <button class="btn btn-outline-success" type="submit">Search</button> %>
+        <%= search_form_for @q, url: "/home", method: :get do |f| %>
+  <%= f.label :name_cont, 'Full Name' %>
+  <%= f.search_field :name_cont %>
+  <%= f.submit %>
+<% end %>
+<% end %>
+
       </form>
     </div>
   </div>

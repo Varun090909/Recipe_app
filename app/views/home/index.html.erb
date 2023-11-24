@@ -1,11 +1,29 @@
 
+<%# <%= search_form_for @q, url: "/home", method: :get do |f| %>
+<!-- 
+<h3><%= t(:hello)%></h3> -->
 
-<ul>
+<% if user_signed_in? %>
+<div class="container-fluid p-4 d-flex flex-wrap text-center justify-content-center align-items-center">
   <% @recipes.each do |recipe| %>
-    <li>
-      <% if user_signed_in? %>
-        <%= link_to recipe.name, recipe %>
-      <% end %>
-    </li>
+    <div class="card m-3" style="width: 16rem;">
+      <% if recipe.file.attached? && recipe.file.image? %>
+        <%= image_tag recipe.file, class: "card-img-top" %>
+      <%else%>
+      <img src="/images/food1.jpeg" class="card-img-top" alt="...">
+      <%end%>
+      <div class="card-body">
+        <h5 class="card-title"><%=  recipe.name %></h5>
+        <%= link_to "view details", recipe , class:"btn btn-primary btn-sm"%>
+       
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+<%else%>
+<img height="720" src="/assets/recipe.webp" width="100%" height="70%" />
+
+<% end %>
+
+  
+

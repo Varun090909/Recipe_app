@@ -1,10 +1,11 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-      has_many :recipes, dependent: :destroy
-      has_many :comments
-      has_many :likes
-    
+    after_create :send_admin_mail
+    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+    has_many :recipes, dependent: :destroy
+    has_many :comments
+    has_many :likes
+
+  def send_admin_mail
+     UserMailer.welcome(self).deliver
+  end
 end

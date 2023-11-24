@@ -12,7 +12,10 @@ module DProject
     config.load_defaults 7.0
     config.assets.enabled = true
     config.assets.precompile += %w( main.css )
-
+    I18n.available_locales = %i[en du]
+    
+    config.i18n.default_locale = :du
+  
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
